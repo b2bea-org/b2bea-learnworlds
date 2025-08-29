@@ -3,7 +3,7 @@
  * 
  * This script dynamically injects collaborator logos based on user tags.
  * The script checks the user's tags and displays appropriate collaborator logos
- * in .collaborator divs.
+ * in the top bar next to the main logo.
  */
 
 // Collaborator configuration - Easy to edit
@@ -24,7 +24,7 @@ const COLLABORATORS = {
 };
 
 /**
- * Main function to inject collaborator logos
+ * Main function to inject collaborator logos into the top bar
  */
 function injectCollaboratorLogos() {
     // Check if user object exists and has tags
@@ -33,50 +33,68 @@ function injectCollaboratorLogos() {
         return;
     }
 
-    // Find all collaborator containers
-    const collaboratorContainers = document.querySelectorAll('.collaborator');
-    
-    if (collaboratorContainers.length === 0) {
-        console.log('B2BEA: No .collaborator containers found');
+    // Check if collaborator logo is already injected
+    if (document.querySelector('#collaborator_logo_wrapper')) {
+        console.log('B2BEA: Collaborator logo wrapper already exists');
         return;
     }
 
-    // Process each user tag
-    me.tags.forEach(userTag => {
-        const collaborator = COLLABORATORS[userTag];
-        
-        if (collaborator) {
-            // Create the HTML for this collaborator
-            const collaboratorHtml = createCollaboratorHtml(collaborator);
-            
-            // Inject into each collaborator container
-            collaboratorContainers.forEach(container => {
-                // Check if this collaborator is already injected
-                const existingLogo = document.getElementById(collaborator.id);
-                if (!existingLogo) {
-                    container.innerHTML += collaboratorHtml;
-                    console.log(`B2BEA: Injected logo for tag: ${userTag}`);
-                }
-            });
+    // Check if user has multi_user tag (required for collaborator logos)
+    if (!me.tags.includes('multi_user')) {
+        console.log('B2BEA: User does not have multi_user tag, collaborator logo not shown');
+        return;
+    }
+
+    // Find matching collaborator based on user tags
+    let matchingCollaborator = null;
+    for (const userTag of me.tags) {
+        if (COLLABORATORS[userTag]) {
+            matchingCollaborator = COLLABORATORS[userTag];
+            break;
         }
-    });
+    }
+
+    if (!matchingCollaborator) {
+        console.log('B2BEA: No matching collaborator found for user tags');
+        return;
+    }
+
+    // Find the top bar logo column
+    const topbarLogoCol = document.querySelector('.lw-topbar-logo-col');
+    
+    if (!topbarLogoCol) {
+        console.log('B2BEA: Top bar logo column not found');
+        return;
+    }
+
+    // Create the collaborator logo wrapper (not a full column)
+    const collaboratorWrapper = createCollaboratorWrapper(matchingCollaborator);
+    
+    // Insert the collaborator wrapper inside the existing logo column
+    topbarLogoCol.appendChild(collaboratorWrapper);
+    
+    console.log(`B2BEA: Injected collaborator logo column for tag: ${matchingCollaborator.tag}`);
 }
 
 /**
- * Create HTML for a collaborator logo
+ * Create HTML for a collaborator logo wrapper
  * @param {Object} collaborator - Collaborator configuration object
- * @returns {string} HTML string for the collaborator
+ * @returns {HTMLElement} DOM element for the collaborator wrapper
  */
-function createCollaboratorHtml(collaborator) {
-    return `
-        <a href="${collaborator.linkUrl}" target="_blank">
-            <img class="learnworlds-element lw-logo" 
-                 data-node-type="image" 
-                 data-magic="image" 
+function createCollaboratorWrapper(collaborator) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'lw-topbar-logo-wrapper flex-item with-flexible-parts va-c collaborator';
+    wrapper.id = 'collaborator_logo_wrapper';
+    
+    wrapper.innerHTML = `
+        <a href="${collaborator.linkUrl}">
+            <img class="learnworlds-element lw-logo collaborator" 
                  src="${collaborator.imageUrl}" 
                  id="${collaborator.id}">
         </a>
     `;
+    
+    return wrapper;
 }
 
 /**
@@ -112,7 +130,7 @@ initForLearnworlds();
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         injectCollaboratorLogos,
-        createCollaboratorHtml,
+        createCollaboratorWrapper,
         COLLABORATORS
     };
 } 
