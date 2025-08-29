@@ -10,7 +10,7 @@
 const COLLABORATORS = {
     'dbt': {
         tag: 'dbt',
-        imageUrl: 'https://media.b2bea.org/academy/departmentforbusinesstradt_dbt_logo.png',
+        imageUrl: 'https://media.b2bea.org/academy/iawdepartmentforbusinesstradt_dbt_logo.png',
         linkUrl: 'https://www.gov.uk/government/organisations/department-for-business-and-trade',
         id: 'dbt_logo'
     }

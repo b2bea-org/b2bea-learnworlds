@@ -73,6 +73,38 @@ If a user has the tag `"dbt"`, the script will inject:
 - Verify that `.collaborator` divs exist in your HTML
 - Make sure image URLs are accessible and valid
 
+### Cache Issues
+
+If your changes aren't taking effect, it's likely due to jsDelivr caching the old version of the script. Here's how to fix it:
+
+#### Option 1: Purge jsDelivr Cache (Recommended)
+
+Use the jsDelivr purge API to clear the cache:
+
+```bash
+curl -X POST https://purge.jsdelivr.net/gh/username/repo@version/path/to/file.js
+```
+
+**For this repository:**
+```bash
+curl -X POST https://purge.jsdelivr.net/gh/[YOUR_USERNAME]/[YOUR_REPO_NAME]/collaborator-logos.js
+```
+
+#### Option 2: Browser Cache Clear
+
+1. **Hard Refresh**: Press `Ctrl + F5` (Windows/Linux) or `Cmd + Shift + R` (Mac)
+2. **DevTools**: Open DevTools → Network tab → Check "Disable cache" → Refresh
+3. **Clear Browser Cache**: Browser settings → Clear browsing data
+
+#### Option 3: Version Parameter
+
+Add a version parameter to your jsDelivr URL:
+```html
+<script src="https://cdn.jsdelivr.net/gh/username/repo@main/collaborator-logos.js?v=1.1"></script>
+```
+
+**Note**: jsDelivr cache can take up to 12 hours to automatically refresh. Using the purge API is the fastest way to see your changes immediately.
+
 ## Requirements
 
 - Learnworlds platform with user tags
