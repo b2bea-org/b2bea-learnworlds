@@ -1,0 +1,104 @@
+
+
+
+/** root color **/
+:root {
+    --root-b2b-blue: #001A70;
+  	--root-b2b-orange: #EB5345;
+} /** End of root color **/
+
+
+
+h1{
+  font-weight:700!important;
+}
+
+.lw-topbar-menu .lw-topbar-options .lw-topbar-option-link:not(.button-like){
+    font-family: "Open Sans", sans!important;
+}
+
+.lw-topbar-menu ul.lw-topbar-options > li.lw-topbar-option > .lw-topbar-option-link:not(.button-like){
+    font-weight: 600!important;
+}
+
+.lw-topbar-menu ul.lw-topbar-options > li.lw-topbar-option > .lw-topbar-option-link:not(.button-like):hover{
+color:var(--root-b2b-orange)!important;
+}
+
+.lw-topbar-menu ul.lw-topbar-submenu > li.lw-topbar-submenu-item  > .lw-topbar-option-link:not(.button-like){
+      font-family: "Open Sans", sans-serif!important;
+    font-weight: 400!important;
+    padding: 0px;
+    transition: transform 0.3s ease;
+}
+
+.lw-topbar-menu ul.lw-topbar-submenu > li.lw-topbar-submenu-item  > .lw-topbar-option-link:not(.button-like):hover{
+	transform: translateX(10px);
+}
+
+#el_1593094758419_22{
+      margin-left: 0px;
+    padding-left: 0px;
+}
+
+.lw-topbar-logo-wrapper .collaborator{
+  padding: 10px;
+  margin-left: 20px;
+}
+
+.collaborator img{
+  height:auto;
+  width:auto;
+  max-width:240px;
+  max-height:80px;
+}
+
+.collaborator a
+
+.lw-filters.horizontal{
+  gap: 5px
+}
+
+.lw-filters.horizontal .filter{
+  text-transform: uppercase;
+  border-radius: 30px;
+  padding: 4px 12px;
+  border: 2px solid transparent;
+}
+
+.lw-filters.horizontal .filter:hover{
+    border: 2px solid var(--root-b2b-blue);
+}
+
+.filter.learnworlds-main-text-small:not(.with-submenu).border-bottom{
+    border: 2px solid var(--root-b2b-blue);
+    border-radius: 30px;
+    color: white;
+    background: var(--root-b2b-blue);
+}
+}
+
+
+/** Media query for mobile **/
+@media only screen and (max-width: 767px) {
+  
+    /** Make the logo smaller on mobile */
+      .lw-topbar .lw-topbar-logo-col .lw-logo{
+          max-width: 50%;
+      }
+
+  .lw-topbar-logo-wrapper .collaborator{
+    display:none;
+  }
+    
+  
+    
+    /** Removed the burger menu when logged out so make icon to go back to main site */
+    
+    #history_1740743538497_371{
+    width:100%;
+    align-content:flex-end;
+    margin-right:20px;
+    }
+    
+  } /** End of media query for mobile **/

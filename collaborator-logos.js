@@ -19,7 +19,7 @@ const COLLABORATORS = {
         imageUrl: 'https://media.b2bea.org/academy/novatize-noir.png',
         linkUrl: 'https://novatize.com/en-ca',
         id: 'novatize_logo'
-    }
+    },
     // Add more collaborators here following the same pattern:
     // 'tag_name': {
     //     tag: 'tag_name',
