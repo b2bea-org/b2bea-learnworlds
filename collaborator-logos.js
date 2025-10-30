@@ -14,7 +14,7 @@ const COLLABORATORS = {
         linkUrl: 'https://www.gov.uk/government/organisations/department-for-business-and-trade',
         id: 'dbt_logo'
     },
-    novatize: {
+    'Novatize': {
         tag: 'novatize',
         imageUrl: 'https://media.b2bea.org/academy/novatize-noir.png',
         linkUrl: 'https://novatize.com/en-ca',
