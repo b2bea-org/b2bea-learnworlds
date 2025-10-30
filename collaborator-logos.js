@@ -13,6 +13,12 @@ const COLLABORATORS = {
         imageUrl: 'https://media.b2bea.org/academy/iawdepartmentforbusinesstradt_dbt_logo.png',
         linkUrl: 'https://www.gov.uk/government/organisations/department-for-business-and-trade',
         id: 'dbt_logo'
+    },
+    novatize: {
+        tag: 'novatize',
+        imageUrl: 'https://media.b2bea.org/academy/novatize-noir.png',
+        linkUrl: 'https://novatize.com/en-ca',
+        id: 'novatize_logo'
     }
     // Add more collaborators here following the same pattern:
     // 'tag_name': {

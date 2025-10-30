@@ -82,12 +82,12 @@ If your changes aren't taking effect, it's likely due to jsDelivr caching the ol
 Use the jsDelivr purge API to clear the cache:
 
 ```bash
-curl -X POST https://purge.jsdelivr.net/gh/username/repo@version/path/to/file.js
+curl https://purge.jsdelivr.net/gh/username/repo@version/path/to/file.js
 ```
 
 **For this repository:**
 ```bash
-curl -X POST https://purge.jsdelivr.net/gh/[YOUR_USERNAME]/[YOUR_REPO_NAME]/collaborator-logos.js
+curl https://purge.jsdelivr.net/gh/b2bea-org/b2bea-learnworlds@main/collaborator-logos.js
 ```
 
 #### Option 2: Browser Cache Clear
