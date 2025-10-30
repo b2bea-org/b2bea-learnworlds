@@ -1,6 +1,3 @@
-
-
-
 /** root color **/
 :root {
     --root-b2b-blue: #001A70;
@@ -53,10 +50,8 @@ color:var(--root-b2b-orange)!important;
   max-height:80px;
 }
 
-.collaborator a
-
 .lw-filters.horizontal{
-  gap: 5px
+  gap: 5px;
 }
 
 .lw-filters.horizontal .filter{
@@ -75,7 +70,6 @@ color:var(--root-b2b-orange)!important;
     border-radius: 30px;
     color: white;
     background: var(--root-b2b-blue);
-}
 }
 
 
