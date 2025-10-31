@@ -18,14 +18,16 @@ const COLLABORATORS = {
         tag: 'novatize',
         imageUrl: 'https://media.b2bea.org/academy/novatize-noir.png',
         linkUrl: 'https://novatize.com/en-ca',
-        id: 'novatize_logo'
+        id: 'novatize_logo',
+        style: 'padding-bottom: 24px;'
     },
     // Add more collaborators here following the same pattern:
     // 'tag_name': {
     //     tag: 'tag_name',
     //     imageUrl: 'https://path/to/image.png',
     //     linkUrl: 'https://collaborator-website.com',
-    //     id: 'tag_name_logo'
+    //     id: 'tag_name_logo',
+    //     style: 'padding-bottom: 24px;' // Optional: inline CSS for the img element
     // }
 };
 
@@ -99,13 +101,25 @@ function createCollaboratorWrapper(collaborator) {
     wrapper.className = 'lw-topbar-logo-wrapper flex-item with-flexible-parts va-c collaborator';
     wrapper.id = 'collaborator_logo_wrapper';
     
-    wrapper.innerHTML = `
-        <a href="${collaborator.linkUrl}">
-            <img class="learnworlds-element lw-logo collaborator" 
-                 src="${collaborator.imageUrl}" 
-                 id="${collaborator.id}">
-        </a>
-    `;
+    // Create the link element
+    const link = document.createElement('a');
+    link.href = collaborator.linkUrl;
+    link.target = '_blank';
+    
+    // Create the img element
+    const img = document.createElement('img');
+    img.className = 'learnworlds-element lw-logo collaborator';
+    img.src = collaborator.imageUrl;
+    img.id = collaborator.id;
+    
+    // Apply inline styles to img if provided
+    if (collaborator.style) {
+        img.style.cssText = collaborator.style;
+    }
+    
+    // Assemble the elements
+    link.appendChild(img);
+    wrapper.appendChild(link);
     
     return wrapper;
 }
